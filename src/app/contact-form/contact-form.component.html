@@ -36,5 +36,11 @@
         <textarea id="comment" cols="30" rows="10" class="form-control" ngModel name="comment" #comment="ngModel"></textarea>
         <div class="alert alert-danger" *ngIf="comment.touched && !comment.value">Comment is required</div>
     </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" ngModel name="isSubscribed">Subscribe to mailing list
+        </label>
+    </div>
+    <p>{{f.value | json}}</p>
     <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
