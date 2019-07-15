@@ -1,11 +1,30 @@
 <form >
     <div class="form-group">
         <label for="firstName">First Name</label>
-        <input   required  minlength="3" maxlength="10" pattern="Mary" type="text" class="form-control" name="firstName" ngModel id="firstName" #firstName="ngModel" (change)="log(firstName)"/>
-        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
-             <div *ngIf="firstName.errors.required"> First name is required</div>  
-             <div *ngIf="firstName.errors.minlength">First name should be minimum 3 characters.</div>
-             <div *ngIf="firstName.errors.pattern">First name should be Mary</div>
+        <input   
+            required  
+            minlength="3" 
+            maxlength="10" 
+            pattern="Mary" 
+            type="text" 
+            class="form-control" 
+            name="firstName" 
+            ngModel 
+            id="firstName" 
+            #firstName="ngModel" 
+            (change)="log(firstName)"/>
+        <div 
+            class="alert alert-danger" 
+            *ngIf="firstName.touched && !firstName.valid">
+             <div *ngIf="firstName.errors.required"> 
+                 First name is required
+            </div>  
+             <div *ngIf="firstName.errors.minlength">
+                 First name should be minimum 3 characters.
+            </div>
+             <div *ngIf="firstName.errors.pattern">
+                 First name should be Mary
+            </div>
         </div>
     </div>
     <div class="form-group">
