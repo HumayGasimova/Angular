@@ -10,4 +10,8 @@ export class ContactFormComponent{
   constructor() { }
 
  log(x){console.log(x)}
+
+ submit(x){
+  console.log(x.value);
+}
 }
