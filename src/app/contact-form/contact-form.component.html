@@ -36,5 +36,5 @@
         <textarea id="comment" cols="30" rows="10" class="form-control" ngModel name="comment" #comment="ngModel"></textarea>
         <div class="alert alert-danger" *ngIf="comment.touched && !comment.value">Comment is required</div>
     </div>
-    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
