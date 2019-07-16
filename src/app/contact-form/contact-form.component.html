@@ -22,7 +22,7 @@
                             First name is required
                     </div>  
                         <div *ngIf="firstName.errors.minlength">
-                            First name should be minimum 3 characters.
+                            First name should be minimum {{firstName.errors.minlength.requiredLength}} characters.
                     </div>
                         <div *ngIf="firstName.errors.pattern">
                             First name should be Mary
@@ -40,6 +40,13 @@
         <label>
             <input type="checkbox" ngModel name="isSubscribed">Subscribe to mailing list
         </label>
+    </div>
+    <div class="form-group">
+        <label for="contactMethod"></label>
+        <select multiple ngModel name="contactMethod" id="contactMethod" class="form-control">  <!-- add  "multiple" to select multiple items -->
+            <option value=""></option>
+            <option *ngFor="let method of contactMethods" [value]="method.id">{{method.name}}</option>  <!-- add  [ngValue]="method" instead value to get object not string of selected item -->
+        </select>
     </div>
     <p>{{f.value | json}}</p>
     <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
