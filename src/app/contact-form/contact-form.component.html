@@ -48,18 +48,12 @@
             <option *ngFor="let method of contactMethods" [value]="method.id">{{method.name}}</option>  <!-- add  [ngValue]="method" instead value to get object not string of selected item -->
         </select>
     </div>
-    <div class="radio">
+    <div *ngFor="let method of contactMethods" class="radio">
         <label for="">
-            <input ngModel type="radio" name="contactMethod" value="1">
-            Email
+            <input ngModel type="radio" name="contactMethod" [value]="method.id">
+            {{method.name}}
         </label>
     </div>
-    <div class="radio">
-        <label for="">
-            <input  ngModel type="radio" name="contactMethod" value="2">
-            Phone
-        </label>
-        </div>
     <p>{{f.value | json}}</p>
     <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
