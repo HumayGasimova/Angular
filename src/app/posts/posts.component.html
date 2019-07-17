@@ -1,5 +1,19 @@
-<ul class="list-group">
-    <li *ngFor="let post of posts" class = "list-group-item">
-        {{post.title}}
-    </li>
-</ul>
+<div>
+    <div>
+        <input   
+        type="text" 
+        class="form-control" 
+        name="firstName" 
+        ngModel 
+        id="firstName" 
+        #title
+        (keyup.enter)="createPost(title)"/>
+    </div>
+    <p>{{title.value}}</p>
+    <ul class="list-group">
+        <li *ngFor="let post of posts" class = "list-group-item">
+            {{post.title}}
+        </li>
+    </ul>
+</div>
+
