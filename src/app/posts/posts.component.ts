@@ -1,6 +1,6 @@
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { post } from 'selenium-webdriver/http';
 
 @Component({
@@ -8,12 +8,15 @@ import { post } from 'selenium-webdriver/http';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit{
   posts: any;
   private url = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient) {
-  http.get(this.url)
+  }
+
+  ngOnInit(){
+    this.http.get(this.url)
     .subscribe((response) => {
       this.posts = response;
     })
