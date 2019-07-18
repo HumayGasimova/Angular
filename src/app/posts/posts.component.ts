@@ -20,11 +20,7 @@ export class PostsComponent implements OnInit{
 
   ngOnInit(){
    this.service.getAll()
-    .subscribe(
-     response => {
-      this.posts = JSON.parse(JSON.stringify(response));
-      console.log(response)
-     });
+    .subscribe( posts => this.posts = posts );
   }
 
   createPost(input: HTMLInputElement){
@@ -32,10 +28,10 @@ export class PostsComponent implements OnInit{
     input.value = '';
     this.service.create(post)
       .subscribe(
-       response => {
-        post['id'] = JSON.parse(JSON.stringify(response)).id;
+       newPost => {
+        post['id'] = JSON.parse(JSON.stringify(newPost)).id;
         this.posts.splice(0,0,post)
-        console.log(JSON.parse(JSON.stringify(response)).id)
+        console.log(JSON.parse(JSON.stringify(newPost)).id)
        }, 
        (error: AppError) => {
           if(error instanceof BadInput){
@@ -59,8 +55,8 @@ export class PostsComponent implements OnInit{
   updatePost(post){
     this.service.update(post)
       .subscribe(
-        response => {
-        console.log(response)
+        updatedPost => {
+        console.log(updatedPost)
        });
     // this.http.put(this.url, JSON.stringify(post));
   }
@@ -69,10 +65,10 @@ export class PostsComponent implements OnInit{
     console.log(post)
     this.service.delete(post.id)
       .subscribe(
-       response => {
+        () => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
-        console.log(response)
+        // console.log(response)
        }, 
        (error: AppError) =>{
            if(error instanceof NotFoundError){

@@ -14,23 +14,27 @@ export class DataService {
 
   getAll() {
     return this.http.get(this.url)
-    .catch(this.handleError);
+        .map((response) => JSON.parse(JSON.stringify(response)))
+        .catch(this.handleError);
 
   }
 
   create(resource){
     return this.http.post(this.url, resource)
-    .catch(this.handleError);
+        .map((response) => JSON.parse(JSON.stringify(response)))
+        .catch(this.handleError);
   }
 
   update(resource){
     return this.http.patch(this.url + '/' + resource.id, JSON.stringify({isRead: true})) 
-    .catch(this.handleError);
+        .map((response) => JSON.parse(JSON.stringify(response)))
+        .catch(this.handleError);
   }
 
   delete(id){
     return this.http.delete(this.url + '/' + id)
-      .catch(this.handleError);
+        .map((response) => JSON.parse(JSON.stringify(response)))
+        .catch(this.handleError);
   }
 
   private handleError(error: Response){
