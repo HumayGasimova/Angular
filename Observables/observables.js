@@ -5,17 +5,19 @@ var observable = Rx_1.Observable.create(function (observer) {
     try {
         observer.next('Hey guys!');
         observer.next('How are you?');
-        // observer.complete()
         setInterval(function () {
             observer.next('I am good');
-        }, 2000);
-        observer.next('This will not send');
+        }, 1000);
+        // observer.complete()
+        // observer.next('This will not send')
     }
     catch (err) {
         observer.error(err);
     }
 });
 var observer = observable.subscribe(function (x) { return console.log(x); }, function (error) { return console.log(error); }, function () { return console.log("Completed"); });
+var observer2 = observable.subscribe(function (x) { return console.log(x); });
+observer.add(observer2); // observer2 toje budet unsubscribe
 setTimeout(function () {
     observer.unsubscribe();
 }, 6001);
@@ -25,3 +27,5 @@ setTimeout(function () {
 //     node.appendChild(textnode);
 //     document.getElementById("output").appendChild(node)
 // }
+// tsc observables.ts
+// node observables.js
