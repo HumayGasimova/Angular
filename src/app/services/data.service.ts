@@ -20,9 +20,10 @@ export class DataService {
   }
 
   create(resource){
-    return this.http.post(this.url, resource)
-        .map((response) => JSON.parse(JSON.stringify(response)))
-        .catch(this.handleError);
+      return Observable.throw(new AppError())
+        // return this.http.post(this.url, resource)
+        //     .map((response) => JSON.parse(JSON.stringify(response)))
+        //     .catch(this.handleError);
   }
 
   update(resource){
@@ -32,9 +33,10 @@ export class DataService {
   }
 
   delete(id){
-    return this.http.delete(this.url + '/' + id)
-        .map((response) => JSON.parse(JSON.stringify(response)))
-        .catch(this.handleError);
+      return Observable.throw(new AppError());
+    // return this.http.delete(this.url + '/' + id)
+    //     .map((response) => JSON.parse(JSON.stringify(response)))
+    //     .catch(this.handleError);
   }
 
   private handleError(error: Response){
