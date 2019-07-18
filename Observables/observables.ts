@@ -12,22 +12,22 @@ var observable = Observable.create((observer: any) => {
     }catch(err){
         observer.error(err)
     }
-})
+}).share();
 
 var observer = observable.subscribe(
     (x: any) => console.log(x),
     (error: any) => console.log(error),
     () => console.log("Completed")
 )
-var observer2 = observable.subscribe(
-    (x: any) => console.log(x)
-)
-observer.add(observer2) // observer2 toje budet unsubscribe
-// observer.remove(observer2)
+// var observer2 = observable.subscribe(
+//     (x: any) => console.log(x)
+// )
 
 setTimeout(() => {
-    observer.unsubscribe();
-}, 6001)
+   var observer2 = observable.subscribe(
+       (x: any) => console.log('Subscribe 2: ' + x)
+   );
+}, 1000)
 
 // function addItem(val:any){
 //     var node = document.createElement("li");

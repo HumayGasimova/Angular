@@ -14,13 +14,14 @@ var observable = Rx_1.Observable.create(function (observer) {
     catch (err) {
         observer.error(err);
     }
-});
+}).share();
 var observer = observable.subscribe(function (x) { return console.log(x); }, function (error) { return console.log(error); }, function () { return console.log("Completed"); });
-var observer2 = observable.subscribe(function (x) { return console.log(x); });
-observer.add(observer2); // observer2 toje budet unsubscribe
+// var observer2 = observable.subscribe(
+//     (x: any) => console.log(x)
+// )
 setTimeout(function () {
-    observer.unsubscribe();
-}, 6001);
+    var observer2 = observable.subscribe(function (x) { return console.log('Subscribe 2: ' + x); });
+}, 1000);
 // function addItem(val:any){
 //     var node = document.createElement("li");
 //     var textnode = document.createTextNode(val);
