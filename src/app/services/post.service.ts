@@ -11,7 +11,7 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PostService {
-  private url = 'https://jsonplaceholder.typicode.com/posts';
+  private url = 'https://efjsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient) { }
 
@@ -38,9 +38,9 @@ export class PostService {
     return this.http.delete(this.url + '/' + id)
       .catch((error: Response) => {
         if(error.status === 404){
-          return Observable.throw(new NotFoundError());
+          return Observable.throwError(new NotFoundError());
         }
-        return Observable.throw(new AppError(error));
+        return Observable.throwError(new AppError(error));
       });
   }
 }

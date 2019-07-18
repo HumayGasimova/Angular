@@ -24,10 +24,6 @@ export class PostsComponent implements OnInit{
      response => {
       this.posts = JSON.parse(JSON.stringify(response));
       console.log(response)
-     }, 
-     (error: Response) => {
-      console.log(error)
-      alert('an unexpected error occured.');
      });
   }
 
@@ -45,8 +41,7 @@ export class PostsComponent implements OnInit{
           if(error instanceof BadInput){
             // this.form.setErrors(error.originalError);
           }
-        alert('an unexpected error occured.');
-        console.log(error)
+          else throw error;
        });
       // .toPromise().then(res => {
       //   console.log(res)
@@ -66,10 +61,6 @@ export class PostsComponent implements OnInit{
       .subscribe(
         response => {
         console.log(response)
-       }, 
-       error => {
-        alert('an unexpected error occured.');
-        console.log(error)
        });
     // this.http.put(this.url, JSON.stringify(post));
   }
@@ -86,10 +77,7 @@ export class PostsComponent implements OnInit{
        (error: AppError) =>{
            if(error instanceof NotFoundError){
             alert('This post has already been deleted.');
-           }else{
-            alert('An unexpected error occured.');
-            console.log(error)
-           }
+           }else throw error;
          });
   }
 }
