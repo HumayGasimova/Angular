@@ -1,6 +1,11 @@
-import { post } from 'selenium-webdriver/http';
+import { BadInput } from './../common/bad-input';
+import { NotFoundError } from './../common/not-found-error';
+import { AppError } from './../common/app-error';
+import { Observable } from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +20,14 @@ export class PostService {
   }
 
   createPosts(post){
-    return this.http.post(this.url, post);
+    return this.http.post(this.url, post)
+    .catch((error: Response) => {
+      if(error.status === 400){
+        return Observable.throw(new BadInput(JSON.parse(JSON.stringify(error))))
+      }else{
+        return Observable.throw(JSON.parse(JSON.stringify(error)))
+      }
+    })
   }
 
   updatePost(post){
@@ -24,5 +36,11 @@ export class PostService {
 
   deletePost(id){
     return this.http.delete(this.url + '/' + id)
+      .catch((error: Response) => {
+        if(error.status === 404){
+          return Observable.throw(new NotFoundError());
+        }
+        return Observable.throw(new AppError(error));
+      });
   }
 }
