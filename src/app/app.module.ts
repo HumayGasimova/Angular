@@ -12,6 +12,8 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
 import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './services/data.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { DataService } from './services/data.service';
     ContactFormComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    PostsComponent
+    PostsComponent,
+    NavbarComponent
     
   ],
   imports: [
@@ -27,7 +30,14 @@ import { DataService } from './services/data.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {
+        path: 'posts',
+        component: PostsComponent
+      }
+
+    ])
   ],
   providers: [
     PostService,
