@@ -33,10 +33,12 @@ export class DataService {
   }
 
   delete(id){
-      return Observable.throw(new AppError());
-    // return this.http.delete(this.url + '/' + id)
-    //     .map((response) => JSON.parse(JSON.stringify(response)))
-    //     .catch(this.handleError);
+    //   return Observable.throw(new AppError());
+    return this.http.delete(this.url + '/' + id)
+        .map((response) => JSON.parse(JSON.stringify(response)))
+        // .toPromise()
+        // .retry(3)
+        .catch(this.handleError);
   }
 
   private handleError(error: Response){
