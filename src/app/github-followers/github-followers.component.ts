@@ -13,10 +13,7 @@ export class GithubFollowersComponent implements OnInit {
 
   ngOnInit() {
     this.service.getAll()
-    .subscribe(followers => {
-      console.log(followers)
-      this.followers = followers
-    })
+    .subscribe(followers => this.followers = followers)
   }
 
 }
