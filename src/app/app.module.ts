@@ -28,6 +28,7 @@ import { OrderService } from './services/order.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,37 +52,38 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    // HttpModule,
     RouterModule.forRoot([
-      // {
-      //   path: '',
-      //   component: HomeComponent
-      // },
-      // {
-      //   path: 'followers/:id/:username',
-      //   component: GithubProfileComponent
-      // },
-      // {
-      //   path: 'followers',
-      //   component: GithubFollowersComponent
-      // },
-      // {
-      //   path: 'posts',
-      //   component: PostsComponent
-      // },
-      // {
-      //   path: '**',
-      //   component: NotFoundComponent
-      // },
-      { path: '', component: HomeComponent },
-      { path: 'admin', component: AdminComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'no-access', component: NoAccessComponent }
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'followers/:id/:username',
+        component: GithubProfileComponent
+      },
+      {
+        path: 'followers',
+        component: GithubFollowersComponent
+      },
+      {
+        path: 'posts',
+        component: PostsComponent
+      },
+      {
+        path: '**',
+        component: NotFoundComponent
+      },
+      // { path: '', component: HomeComponent },
+      // { path: 'admin', component: AdminComponent },
+      // { path: 'login', component: LoginComponent },
+      // { path: 'no-access', component: NoAccessComponent }
 
     ])
   ],
   providers: [
-    // PostService,
-    // {provide: ErrorHandler, useClass: AppErrorHandler}
+    PostService,
+    {provide: ErrorHandler, useClass: AppErrorHandler},
     OrderService,
     AuthService,
 

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  login(credentials) {
+    return this.http.post(
+      '/api/authenticate',
+      JSON.stringify(credentials)
+    );
+  }
+
+  logout() {}
+
+  isLoggedIn() {
+    return false;
+  }
 }

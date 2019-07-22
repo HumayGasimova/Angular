@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getOrders() {
+    return this.http.get('/api/orders')
+    .map(response =>  JSON.parse(JSON.stringify(response)));
+  }
 }
