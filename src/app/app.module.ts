@@ -18,6 +18,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { NoAccessComponent } from './no-access/no-access.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { GithubFollowersComponent } from './github-followers/github-followers.co
     GithubProfileComponent,
     GithubFollowersComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AdminComponent,
+    LoginComponent,
+    NoAccessComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
