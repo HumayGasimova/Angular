@@ -21,16 +21,16 @@ export class GithubFollowersComponent implements OnInit {
     Observable.combineLatest([
       this.route.paramMap,
       this.route.queryParamMap
-    ])
-    .subscribe(combined => {
-      let id = combined[0].get('id');
-      let page = combined[1].get('page');
-console.log( page)
-      this.service.getAll()
-      .subscribe(followers => this.followers = followers)
-
-      // this.service.getAll({id: id, page: page})
-    });
+    ]).switchMap(combined => {
+        let id = combined[0].get('id');
+        let page = combined[1].get('page');
+        console.log( page)
+         // this.service.getAll({id: id, page: page})
+       return  this.service.getAll()
+        // .subscribe(followers => this.followers = followers)
+    })
+    .subscribe(followers => this.followers = followers)
+  
 
 
 
