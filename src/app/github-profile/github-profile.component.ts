@@ -11,7 +11,7 @@ export class GithubProfileComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private router: Router
+    private router: Router // <-----
   ) { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class GithubProfileComponent implements OnInit {
   }
 
   submit() {
-    this.router.navigate(['/followers'], {
+    this.router.navigate(['/followers'], { //programmatic navigation
       queryParams: { page: 1, order: 'newest'}
     })
   }
