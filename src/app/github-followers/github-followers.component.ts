@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { GithubFollowersService } from './../services/github-followers.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./github-followers.component.scss']
 })
 export class GithubFollowersComponent implements OnInit {
-
   followers: any[];
-  constructor(private service: GithubFollowersService) { }
+
+  constructor(
+    private route: ActivatedRoute,
+    private service: GithubFollowersService
+  ) { }
 
   ngOnInit() {
     this.service.getAll()

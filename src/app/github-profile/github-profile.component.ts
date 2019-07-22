@@ -9,15 +9,22 @@ import { Observable } from 'rxjs';
 })
 export class GithubProfileComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.route.paramMap
-    .subscribe(params => {
-      console.log(params)
-      let id = +params.get('id');
-      console.log(id);
-    })
+
+    let id = this.route.snapshot.paramMap.get('id'); // if you do not need to navigate from one page to another use snapshot
+    console.log(id)
+
+  //   this.route.paramMap
+  //   .subscribe(params => {
+  //     console.log(params)
+  //     let id = +params.get('id');
+  //     console.log(id);
+  //   })
   }
 
   submit() {
