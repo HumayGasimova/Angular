@@ -1,7 +1,20 @@
 
 <div>
   <ul class="navbar">
-    <li routerLinkActive="active current"><a routerLink="/followers">Followers</a></li>
-    <li routerLinkActive="active current"><a routerLink="/posts">Posts</a></li>
+    <li>
+      <a 
+        routerLink="/followers"  
+        routerLinkActive="active"
+        [queryParams]="{page:1, order: 'newest'}"
+        >
+        Followers
+      </a>
+    </li>
+    <li>
+      <a
+       routerLinkActive="active current"
+        routerLink="/posts"
+      >Posts</a>
+    </li>
   </ul>
 </div>
