@@ -16,19 +16,20 @@ export class GithubProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    let id = this.route.snapshot.paramMap.get('id'); // if you do not need to navigate from one page to another use snapshot
+    let id = this.route.snapshot.paramMap.get('id'); // if you will navigate from one page to another use snapshot
     console.log(id)
 
-  //   this.route.paramMap
-  //   .subscribe(params => {
-  //     console.log(params)
-  //     let id = +params.get('id');
-  //     console.log(id);
-  //   })
+    // this.route.paramMap //observable => if same page, different route parameters
+    // .subscribe(params => {
+    //       console.log(params)
+    //       let id = +params.get('id')
+    //       console.log(id)
+    //     })
+    
   }
 
   submit() {
-    this.router.navigate(['followers'], {
+    this.router.navigate(['/followers'], {
       queryParams: { page: 1, order: 'newest'}
     })
   }
