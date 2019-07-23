@@ -12,9 +12,9 @@ export class AuthService {
        JSON.stringify(credentials))
        .map(response => {
          let result = JSON.parse(JSON.stringify(response));
-         console.log(response);
-         if (result && result.token){
-           localStorage.setItem('token', result.token);
+        //  console.log(result._body.token);
+         if (result && result._body && result._body.token){
+           localStorage.setItem('token', result._body.token);
            return true;
          }else{
            return false;
