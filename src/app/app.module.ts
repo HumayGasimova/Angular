@@ -54,30 +54,30 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     HttpClientModule,
     // HttpModule,
     RouterModule.forRoot([
-      {
-        path: '',
-        component: HomeComponent
-      },
-      {
-        path: 'followers/:id/:username',
-        component: GithubProfileComponent
-      },
-      {
-        path: 'followers',
-        component: GithubFollowersComponent
-      },
-      {
-        path: 'posts',
-        component: PostsComponent
-      },
-      {
-        path: '**',
-        component: NotFoundComponent
-      },
-      // { path: '', component: HomeComponent },
-      // { path: 'admin', component: AdminComponent },
-      // { path: 'login', component: LoginComponent },
-      // { path: 'no-access', component: NoAccessComponent }
+      // {
+      //   path: '',
+      //   component: HomeComponent
+      // },
+      // {
+      //   path: 'followers/:id/:username',
+      //   component: GithubProfileComponent
+      // },
+      // {
+      //   path: 'followers',
+      //   component: GithubFollowersComponent
+      // },
+      // {
+      //   path: 'posts',
+      //   component: PostsComponent
+      // },
+      // {
+      //   path: '**',
+      //   component: NotFoundComponent
+      // },
+      { path: '', component: HomeComponent },
+      { path: 'admin', component: AdminComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'no-access', component: NoAccessComponent }
 
     ])
   ],

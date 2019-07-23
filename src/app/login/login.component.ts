@@ -17,12 +17,12 @@ export class LoginComponent {
 
   signIn(credentials){
     this.authService.login(credentials)
-      .subscribe(result => {
-        if(result){
-          this.router.navigate(['/']);
-        }else{
-          this.invalidLogin = true;
-        }
+      .subscribe(result => {console.log(result)
+        // if(result){
+        //   this.router.navigate(['/']);
+        // }else{
+        //   this.invalidLogin = true;
+        // }
       });
   }
 
