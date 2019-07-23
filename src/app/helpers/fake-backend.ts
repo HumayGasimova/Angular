@@ -1,5 +1,6 @@
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { HttpClient } from '@angular/common/http';
 
 export function fakeBackendFactory(
     backend: MockBackend, 
@@ -17,7 +18,6 @@ export function fakeBackendFactory(
       if (connection.request.url.endsWith('/api/authenticate') &&
         connection.request.method === RequestMethod.Post) {
         let body = JSON.parse(connection.request.getBody());
-debugger
         if (body.email === 'mosh@domain.com' && body.password === '1234') {
           connection.mockRespond(new Response(
             new ResponseOptions({
@@ -58,7 +58,7 @@ debugger
 }
 
 export let fakeBackendProvider = {
-    provide: Http,
+    provide: HttpClient,
     useFactory: fakeBackendFactory,
     deps: [MockBackend, BaseRequestOptions]
 };
