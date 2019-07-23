@@ -1,3 +1,4 @@
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 
 import { MockBackend, MockConnection } from '@angular/http/testing';
@@ -78,7 +79,7 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
       //   component: NotFoundComponent
       // },
       { path: '', component: HomeComponent },
-      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'no-access', component: NoAccessComponent }
 
@@ -90,6 +91,7 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     OrderService,
     AuthService,
     AuthGuard,
+    AdminAuthGuard,
     //For creating a mock back-end. You don't need these in a real app
     fakeBackendProvider,
     MockBackend,
