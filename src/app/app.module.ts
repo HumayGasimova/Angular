@@ -1,3 +1,5 @@
+import { AuthGuard } from './services/auth-guard.service';
+
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthService } from './services/auth.service';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -27,6 +29,7 @@ import { SignupComponent } from './signup/signup.component';
 import { OrderService } from './services/order.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
+
 
 
 @NgModule({
@@ -75,7 +78,7 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
       //   component: NotFoundComponent
       // },
       { path: '', component: HomeComponent },
-      { path: 'admin', component: AdminComponent },
+      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'no-access', component: NoAccessComponent }
 
@@ -86,7 +89,7 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     // {provide: ErrorHandler, useClass: AppErrorHandler},
     OrderService,
     AuthService,
-
+    AuthGuard,
     //For creating a mock back-end. You don't need these in a real app
     fakeBackendProvider,
     MockBackend,
