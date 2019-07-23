@@ -17,7 +17,7 @@ export function fakeBackendFactory(
       if (connection.request.url.endsWith('/api/authenticate') &&
         connection.request.method === RequestMethod.Post) {
         let body = JSON.parse(connection.request.getBody());
-
+debugger
         if (body.email === 'mosh@domain.com' && body.password === '1234') {
           connection.mockRespond(new Response(
             new ResponseOptions({

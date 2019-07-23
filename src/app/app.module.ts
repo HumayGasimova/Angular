@@ -1,4 +1,4 @@
-import { MockBackend } from '@angular/http/testing';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthService } from './services/auth.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
@@ -52,7 +52,7 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // HttpModule,
+    HttpModule,
     RouterModule.forRoot([
       // {
       //   path: '',
@@ -82,8 +82,8 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     ])
   ],
   providers: [
-    PostService,
-    {provide: ErrorHandler, useClass: AppErrorHandler},
+    // PostService,
+    // {provide: ErrorHandler, useClass: AppErrorHandler},
     OrderService,
     AuthService,
 
@@ -91,6 +91,9 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions
+
+
+    // fakeBackendProvider
   ],
   bootstrap: [AppComponent],
 })
