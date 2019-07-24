@@ -58,47 +58,43 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     HttpClientModule,
     HttpModule,
     RouterModule.forRoot([
-      // {
-      //   path: '',
-      //   component: HomeComponent
-      // },
-      // {
-      //   path: 'followers/:id/:username',
-      //   component: GithubProfileComponent
-      // },
-      // {
-      //   path: 'followers',
-      //   component: GithubFollowersComponent
-      // },
-      // {
-      //   path: 'posts',
-      //   component: PostsComponent
-      // },
-      // {
-      //   path: '**',
-      //   component: NotFoundComponent
-      // },
-      { path: '', component: HomeComponent },
-      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
-      { path: 'login', component: LoginComponent },
-      { path: 'no-access', component: NoAccessComponent }
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'followers/:id/:username',
+        component: GithubProfileComponent
+      },
+      {
+        path: 'followers',
+        component: GithubFollowersComponent
+      },
+      {
+        path: 'posts',
+        component: PostsComponent
+      },
+      {
+        path: '**',
+        component: NotFoundComponent
+      },
+      // { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      // { path: 'login', component: LoginComponent },
+      // { path: 'no-access', component: NoAccessComponent }
 
     ])
   ],
   providers: [
-    // PostService,
-    // {provide: ErrorHandler, useClass: AppErrorHandler},
+    PostService,
+    {provide: ErrorHandler, useClass: AppErrorHandler},
     OrderService,
     AuthService,
     AuthGuard,
     AdminAuthGuard,
     //For creating a mock back-end. You don't need these in a real app
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions
-
-
-    // fakeBackendProvider
+    // fakeBackendProvider,
+    // MockBackend,
+    // BaseRequestOptions
   ],
   bootstrap: [AppComponent],
 })
