@@ -98,7 +98,7 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpConfigInterceptor,
       multi:true
-    }
+    },
 
     //For creating a mock back-end. You don't need these in a real app
     // fakeBackendProvider,

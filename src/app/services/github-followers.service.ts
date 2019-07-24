@@ -8,6 +8,6 @@ import { Injectable } from '@angular/core';
 export class GithubFollowersService extends DataService {
 
   constructor(http: HttpClient) { 
-    super('https://api.github.com/users/mosh-hamedani/followers', http)
+    super('https://api.github.com/users/mosh-hamedani/follower', http)
   }
 }
