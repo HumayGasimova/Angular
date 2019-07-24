@@ -38,15 +38,15 @@ export function fakeBackendFactory(
        //
        if (connection.request.url.endsWith('/api/orders') && 
            connection.request.method === RequestMethod.Get) {
-         if (connection.request.headers.get('Authorization') === 'Bearer ' + token) {
+         if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
             connection.mockRespond(new Response(
               new ResponseOptions({ status: 200, body: [1, 2, 3] })
          ));
-       } else {
-           connection.mockRespond(new Response(
-             new ResponseOptions({ status: 401 })
-           ));
-       }
+        } else {
+            connection.mockRespond(new Response(
+              new ResponseOptions({ status: 401 })
+            ));
+        }
     }
 
 

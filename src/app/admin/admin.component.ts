@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -8,12 +9,16 @@ import { OrderService } from '../services/order.service';
 })
 export class AdminComponent implements OnInit {
   orders: any[];
-
+  
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.orderService.getOrders()
-      .subscribe(orders => this.orders = orders);
+      .subscribe(orders => {
+        console.log("Hey")
+        // debugger
+        // this.orders = orders
+      });
   }
 
 }
