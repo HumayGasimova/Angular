@@ -1,3 +1,4 @@
+import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 
@@ -17,7 +18,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { PostsComponent } from './posts/posts.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataService } from './services/data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
@@ -30,6 +31,7 @@ import { SignupComponent } from './signup/signup.component';
 import { OrderService } from './services/order.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
+
 
 
 
@@ -91,6 +93,13 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     AuthService,
     AuthGuard,
     AdminAuthGuard,
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpConfigInterceptor,
+      multi:true
+    }
+
     //For creating a mock back-end. You don't need these in a real app
     // fakeBackendProvider,
     // MockBackend,
