@@ -90,7 +90,7 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     PostService,
     {provide: ErrorHandler, useClass: AppErrorHandler},
     OrderService,
-    AuthService,
+    // AuthService,
     AuthGuard,
     AdminAuthGuard,
 
