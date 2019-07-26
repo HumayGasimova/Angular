@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
  
 })
 export class AppComponent {
-  title = 'templateDrivenForms';
+  courses: any[];
+
+  constructor( private db: AngularFireDatabase) {
+    db.list('courses')
+    .snapshotChanges()
+    .subscribe(courses => {
+      this.courses = courses;
+      console.log(courses)
+    })
+  }
 }

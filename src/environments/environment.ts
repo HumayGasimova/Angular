@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  navBarBackgroundColor: 'blue'
+  navBarBackgroundColor: 'blue',
+  firebase : {
+    apiKey: "AIzaSyASBv9fU6Z_p0J7Mcqmiu_6JmTXcY1QQYQ",
+    authDomain: "project-15d2f.firebaseapp.com",
+    databaseURL: "https://project-15d2f.firebaseio.com",
+    projectId: "project-15d2f",
+    storageBucket: "project-15d2f.appspot.com",
+    messagingSenderId: "475783801096",
+    appId: "1:475783801096:web:f05997ed3a53d32c"
+  }
 };
 
 /*

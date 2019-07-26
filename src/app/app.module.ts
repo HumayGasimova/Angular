@@ -31,8 +31,10 @@ import { SignupComponent } from './signup/signup.component';
 import { OrderService } from './services/order.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
-
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from 'src/environments/environment';
+import {AngularFirestore} from 'angularfire2/firestore'
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -88,12 +92,12 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
   ],
   providers: [
     PostService,
-    {provide: ErrorHandler, useClass: AppErrorHandler},
+    { provide: ErrorHandler, useClass: AppErrorHandler },
     OrderService,
-    // AuthService,
+    AuthService,
     AuthGuard,
     AdminAuthGuard,
-
+    AngularFirestore,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpConfigInterceptor,
