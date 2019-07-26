@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor( private db: AngularFireDatabase) {
     db.list('courses')
-    .snapshotChanges()
+    .valueChanges()
     .subscribe(courses => {
       this.courses = courses;
       console.log(courses)
