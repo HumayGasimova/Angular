@@ -7,3 +7,10 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
 <h1>Hey</h1>
+
+<ul *ngFor="let course of courses">
+    <li>
+        {{course}}
+    </li>
+</ul>
+<button (click)="ngOnDestroy()">Go Offline</button>
