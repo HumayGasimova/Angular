@@ -10,7 +10,7 @@
 
 <ul *ngFor="let course of courses$ | async">
     <li>
-        {{course.payload.node_.value_}}
+        {{course.payload.node_.value_ || course.payload.node_.children_.root_.value.value_}}
         <button (click)="update(course)">Update</button>
     </li>
 </ul>

@@ -40,7 +40,10 @@ export class AppComponent implements OnInit{
   }
  update(course){
    this.db.object('/courses/' + course.key)
-   .set(course.payload.node_.value_ + "Updated")
+   .set({
+      title: course.payload.node_.value_ + "Updated",
+      price: 150
+   })
  }
 
 getContent(){
