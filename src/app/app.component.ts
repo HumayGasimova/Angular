@@ -10,9 +10,9 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   courses$;
   course$;
+ // author: any[];
   author$;
-  // courses: any[];
-  // subscription: Subscription;
+ // subscription: Subscription;
 
   constructor( private db: AngularFireDatabase) {
     this.courses$ = db.list('/courses')
@@ -20,16 +20,22 @@ export class AppComponent {
 
     this.course$ = db.object('/courses/1') 
                   .valueChanges();
+
     this.author$ = db.object('/authors/1') 
     .valueChanges();
-  //   this.subscription = db.list('/courses')
-  //   .valueChanges()
-  //   .subscribe(courses => {
-  //     this.courses = courses;
-  //     console.log(courses)
-  //   })
-  // }
-
+    // this.subscription = db.list('/authors/1')
+    // .valueChanges()
+    // .subscribe(author => {
+    //   this.author = author;
+    //   console.log(author)
+    // })
+ //
+//  this.subscription = db.list('/authors/1')
+//  .valueChanges()
+//  .subscribe(author => {
+//    this.author = author;
+//    console.log(author)
+//  })
   // ngOnDestroy(){
   //   this.subscription.unsubscribe();
   }
