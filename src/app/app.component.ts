@@ -1,3 +1,4 @@
+import { NavbarComponent } from './navbar/navbar.component';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList,  AngularFireObject } from 'angularfire2/database';
 import { Subscription } from 'rxjs';
@@ -13,11 +14,11 @@ export class AppComponent implements OnInit{
   course$;
  // author: any[];
   author$;
- // subscription: Subscription;
+ subscription: Subscription;
 
   constructor( private db: AngularFireDatabase) {
     this.courses$ = db.list('/courses')
-                    .valueChanges()
+                    .snapshotChanges()
 
     // this.course$ = db.object('/courses/1') 
     //               .valueChanges();
@@ -29,15 +30,39 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.coursePush$ = this.db.list('/courses')
+    
   }
 
+
   add(course){
-    this.coursePush$.push([{
-      name: course.value,
-      id: 8
-    }])
+    this.coursePush$.push(course.value)
     course.value='';
   }
+ update(course){
+   this.db.object('/courses/' + course.key)
+   .set(course.payload.node_.value_ + "Updated")
+ }
+
+getContent(){
+  this.db.list('/courses')
+  .snapshotChanges()
+  .subscribe(x => {
+    console.log(x)
+  })
+}
+  // add(course: HTMLInputElement){
+  //   this.coursePush$.push([{
+  //     name: course.value,
+  //     price: 150,
+  //     isLive: true,
+  //     section: [
+  //       {title: 'Components'},
+  //       {title: 'Directives'},
+  //       {title: 'Template'}
+  //     ]
+  //   }])
+  //   course.value='';
+  // }
 
 
   //  this.subscription = db.list('/authors/1')

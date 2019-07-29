@@ -10,9 +10,12 @@
 
 <ul *ngFor="let course of courses$ | async">
     <li>
-        {{course}}
+        {{course.payload.node_.value_}}
+        <button (click)="update(course)">Update</button>
     </li>
 </ul>
+
+<button (click)="getContent()">getContent</button>
 <!-- <p>
     {{course$ | async | json}}
 </p>
