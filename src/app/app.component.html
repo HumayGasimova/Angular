@@ -4,27 +4,29 @@
 <!-- <app-posts></app-posts> -->
 
 
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 <router-outlet></router-outlet>
-<!-- <h1>Hey</h1>
+<h1>Hey</h1> -->
 
 <ul *ngFor="let course of courses$ | async">
     <li>
         {{course}}
     </li>
 </ul>
-<p>
+<!-- <p>
     {{course$ | async | json}}
-</p>-->
+</p>
 <p>
     {{author$ | async | json}}
-</p> 
+</p>  -->
 
-<ul>
+<input type="text" (keyup.enter)="add(course)" #course>
+<!-- <ul>
     <li>{{(author$ | async)?.name }}</li>
     <li>{{(author$ | async)?.students}}</li>
     <li>{{(author$ | async)?.isPremium}}</li>
-</ul>
+</ul> -->
+<!-- <button (click)="add()">add</button> -->
 
 <!-- <ul *ngIf="author$ | async as author">
     <li>{{author.name}}</li>

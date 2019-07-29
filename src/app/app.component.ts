@@ -1,5 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
-import { AngularFireDatabase, AngularFireList  } from 'angularfire2/database';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireDatabase, AngularFireList,  AngularFireObject } from 'angularfire2/database';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -7,8 +7,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
  
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   courses$;
+  coursePush$: AngularFireList<any[]>;
   course$;
  // author: any[];
   author$;
@@ -18,25 +19,31 @@ export class AppComponent {
     this.courses$ = db.list('/courses')
                     .valueChanges()
 
-    this.course$ = db.object('/courses/1') 
-                  .valueChanges();
+    // this.course$ = db.object('/courses/1') 
+    //               .valueChanges();
 
-    this.author$ = db.object('/authors/1') 
-    .valueChanges();
-    // this.subscription = db.list('/authors/1')
-    // .valueChanges()
-    // .subscribe(author => {
-    //   this.author = author;
-    //   console.log(author)
-    // })
- //
-//  this.subscription = db.list('/authors/1')
-//  .valueChanges()
-//  .subscribe(author => {
-//    this.author = author;
-//    console.log(author)
-//  })
+    // this.author$ = db.object('/authors/1') 
+    // .valueChanges();
+    
+  }
+
+  ngOnInit(){
+    this.coursePush$ = this.db.list('/courses')
+  }
+
+  add(course){
+    this.coursePush$.push(course.value)
+    course.value='';
+  }
+
+
+  //  this.subscription = db.list('/authors/1')
+  //  .valueChanges()
+  //  .subscribe(author => {
+  //    this.author = author;
+  //    console.log(author)
+  //  })
   // ngOnDestroy(){
   //   this.subscription.unsubscribe();
-  }
+ 
 }
