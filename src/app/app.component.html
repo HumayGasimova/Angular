@@ -3,9 +3,9 @@
 <!-- <app-new-course-form></app-new-course-form> -->
 <!-- <app-posts></app-posts> -->
 
-<!-- 
+
 <app-navbar></app-navbar>
-<router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 <!-- <h1>Hey</h1>
 
 <ul *ngFor="let course of courses$ | async">
@@ -16,12 +16,18 @@
 <p>
     {{course$ | async | json}}
 </p>-->
-<!-- <p>
+<p>
     {{author$ | async | json}}
-</p>  -->
+</p> 
 
-<ul *ngIf="author$ | async as author">
+<ul>
+    <li>{{(author$ | async)?.name }}</li>
+    <li>{{(author$ | async)?.students}}</li>
+    <li>{{(author$ | async)?.isPremium}}</li>
+</ul>
+
+<!-- <ul *ngIf="author$ | async as author">
     <li>{{author.name}}</li>
     <li>{{author.students}}</li>
     <li>{{author.isPremium}}</li>
-</ul>
+</ul> -->
