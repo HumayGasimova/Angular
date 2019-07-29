@@ -12,10 +12,14 @@
     <li>
         {{course.payload.node_.value_ || course.payload.node_.children_.root_.value.value_}}
         <button (click)="update(course)">Update</button>
+        <button (click)="delete(course)">Delete</button>
     </li>
 </ul>
 
 <button (click)="getContent()">getContent</button>
+
+
+
 <!-- <p>
     {{course$ | async | json}}
 </p>

@@ -46,6 +46,12 @@ export class AppComponent implements OnInit{
    })
  }
 
+ delete(course){
+  this.db.object('/courses/' + course.key)
+  .remove()
+  .then(x=>console.log("DELETED"));
+}
+
 getContent(){
   this.db.list('/courses')
   .snapshotChanges()
