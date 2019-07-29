@@ -32,7 +32,10 @@ export class AppComponent implements OnInit{
   }
 
   add(course){
-    this.coursePush$.push(course.value)
+    this.coursePush$.push([{
+      name: course.value,
+      id: 8
+    }])
     course.value='';
   }
 
