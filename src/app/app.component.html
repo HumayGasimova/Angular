@@ -8,7 +8,7 @@
 <router-outlet></router-outlet>
 <h1>Hey</h1>
 
-<ul *ngFor="let course of courses">
+<ul *ngFor="let course of courses$ | async">
     <li>
         {{course}}
     </li>
