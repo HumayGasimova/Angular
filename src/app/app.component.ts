@@ -59,6 +59,10 @@ getContent(){
     console.log(x)
   })
 }
+
+onChange($event){
+  console.log($event)
+}
   // add(course: HTMLInputElement){
   //   this.coursePush$.push([{
   //     name: course.value,

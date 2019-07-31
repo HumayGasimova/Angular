@@ -8,7 +8,7 @@
 <router-outlet></router-outlet>
 <h1>Hey</h1> -->
 
-<ul *ngFor="let course of courses$ | async">
+<!-- <ul *ngFor="let course of courses$ | async">
     <li>
         {{course.payload.node_.value_ || course.payload.node_.children_.root_.value.value_}}
         <button (click)="update(course)">Update</button>
@@ -16,7 +16,7 @@
     </li>
 </ul>
 
-<button (click)="getContent()">getContent</button>
+<button (click)="getContent()">getContent</button> -->
 
 
 
@@ -27,7 +27,7 @@
     {{author$ | async | json}}
 </p>  -->
 
-<input type="text" (keyup.enter)="add(course)" #course>
+<!-- <input type="text" (keyup.enter)="add(course)" #course> -->
 <!-- <ul>
     <li>{{(author$ | async)?.name }}</li>
     <li>{{(author$ | async)?.students}}</li>
@@ -40,3 +40,11 @@
     <li>{{author.students}}</li>
     <li>{{author.isPremium}}</li>
 </ul> -->
+
+<mat-checkbox
+    #showDetails
+    [value]=""
+    checked="checked"
+    (change)="onChange($event)"
+>Show Details</mat-checkbox>
+<div *ngIf="showDetails.checked">Some details...</div>

@@ -2,6 +2,9 @@ import { HttpConfigInterceptor } from './interceptor/httpconfig.interceptor';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 
+
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { AuthService } from './services/auth.service';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -34,8 +37,9 @@ import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
-import {AngularFirestore} from 'angularfire2/firestore'
+import { AngularFirestore } from 'angularfire2/firestore';
 
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,8 @@ import {AngularFirestore} from 'angularfire2/firestore'
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
     RouterModule.forRoot([
       {
         path: '',
