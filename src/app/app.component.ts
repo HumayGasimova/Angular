@@ -1,5 +1,5 @@
 import { NavbarComponent } from './navbar/navbar.component';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase, AngularFireList,  AngularFireObject } from 'angularfire2/database';
 import { Subscription } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
  
 })
 export class AppComponent implements OnInit{
+  isChecked = true;
   courses$;
   coursePush$: AngularFireList<any[]>;
   course$;

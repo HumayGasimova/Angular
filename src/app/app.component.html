@@ -41,10 +41,16 @@
     <li>{{author.isPremium}}</li>
 </ul> -->
 
-<mat-checkbox
+<!-- <mat-checkbox
     #showDetails
     [value]=""
     checked="checked"
     (change)="onChange($event)"
 >Show Details</mat-checkbox>
-<div *ngIf="showDetails.checked">Some details...</div>
+<div *ngIf="showDetails.checked">Some details...</div> -->
+
+<mat-radio-group value="1">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2" [checked]="isChecked">Option 2</mat-radio-button>
+    <mat-radio-button value="3">Option 2</mat-radio-button>
+</mat-radio-group>

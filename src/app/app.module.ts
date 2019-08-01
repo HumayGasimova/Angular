@@ -40,6 +40,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
+    MatRadioModule,
     RouterModule.forRoot([
       {
         path: '',
