@@ -42,6 +42,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatCheckboxModule,
     MatRadioModule,
     MatSelectModule,
+    MatInputModule,
     RouterModule.forRoot([
       {
         path: '',

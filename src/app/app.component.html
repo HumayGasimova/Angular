@@ -55,8 +55,38 @@
     <mat-radio-button value="3">Option 2</mat-radio-button>
 </mat-radio-group> -->
 
-<mat-select [(ngModel)]="color">
+<!-- <mat-select [(ngModel)]="color">
     <mat-option 
         *ngFor='let color of colors'
         [value]="color.id">{{color.name}}</mat-option>
-</mat-select>
+</mat-select> -->
+
+<form >
+    <mat-form-field class="example-full-width">
+      <input 
+        ngModel
+        #name="ngModel"
+        name="name"
+        matInput 
+        placeholder="Name" 
+        value="Sushi" 
+        required>
+    </mat-form-field>
+    <mat-hint>Type name.</mat-hint>
+    <mat-error *ngIf="name.invalid && name.errors.required">
+        The name is required
+    </mat-error>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Last Name"></textarea>
+    </mat-form-field>
+</form>
+
+ <p>
+    <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Address 2"></textarea>
+    </mat-form-field>
+</p>
